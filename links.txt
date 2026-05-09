@@ -1,7 +1,7 @@
 # فرمت: لینک|نوع|کیفیت
-https://youtu.be/XXXXXX|video|1080
-https://www.youtube.com/watch?v=XXXXXX|audio|best
-https://www.instagram.com/p/XXXXXX|video|720
-https://twitter.com/XXXXXX/status/XXXXXX|video|best
-https://www.tiktok.com/@XXXXXX/video/XXXXXX|video|1080
-https://soundcloud.com/XXXXXX/XXXXXX|audio|best
+# https://youtu.be/XXXXXX|video|1080
+# https://www.youtube.com/watch?v=XXXXXX|audio|best
+# https://www.instagram.com/p/XXXXXX|video|720
+# https://twitter.com/XXXXXX/status/XXXXXX|video|best
+# https://www.tiktok.com/@XXXXXX/video/XXXXXX|video|1080
+# https://soundcloud.com/XXXXXX/XXXXXX|audio|best
