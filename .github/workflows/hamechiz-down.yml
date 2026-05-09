@@ -1,1 +1,115 @@
+name: "🍉 همه‌چیزدان v3.0 - دانلود از یوتیوب، اینستا، توییتر، تیک‌تاک، آپارات و 1700+ سایت دیگر"
 
+on:
+  push:
+    branches:
+      - "**"
+  workflow_dispatch:
+    inputs:
+      manual_url:
+        description: '🔗 لینک ویدیو/صدا (اختیاری - در غیر این صورت از commit message خوانده می‌شود)'
+        required: false
+        type: string
+      quality:
+        description: '🎬 کیفیت پیشفرض'
+        required: false
+        default: 'best'
+        type: choice
+        options:
+          - 'best'
+          - '2160'
+          - '1440'
+          - '1080'
+          - '720'
+          - '480'
+          - '360'
+      audio_only:
+        description: '🎵 فقط صدا (MP3)'
+        required: false
+        default: 'false'
+        type: boolean
+      subtitles:
+        description: '📝 دانلود زیرنویس (انگلیسی و فارسی)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 دریافت ریپازیتوری
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🐍 نصب ابزارهای مورد نیاز
+        run: |
+          echo "📦 در حال نصب yt-dlp و ffmpeg..."
+          pip install --upgrade yt-dlp
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg zip unzip
+          echo "✅ همه ابزارها نصب شدند!"
+
+      - name: 🍪 تنظیم کوکی‌های یوتیوب (اختیاری - برای ویدیوهای age-restricted)
+        run: |
+          if [ -n "${{ secrets.YOUTUBE_COOKIES }}" ]; then
+            mkdir -p ~/.cache/yt-dlp/youtube
+            echo "${{ secrets.YOUTUBE_COOKIES }}" > ~/.cache/yt-dlp/youtube/cookies.txt
+            echo "✅ کوکی‌های یوتیوب نصب شدند (برای دسترسی به ویدیوهای محدودیت سنی)"
+          else
+            echo "⚠️ کوکی یافت نشد - دانلود بدون کوکی انجام می‌شود"
+            echo "💡 برای دانلود ویدیوهای age-restricted، Secret به نام YOUTUBE_COOKIES اضافه کنید"
+          fi
+
+      - name: 🔍 استخراج لینک و تنظیمات از commit message یا ورودی دستی
+        run: |
+          # بررسی لینک از ورودی دستی
+          if [ -n "${{ github.event.inputs.manual_url }}" ]; then
+            URL="${{ github.event.inputs.manual_url }}"
+            MSG="manual run from GitHub UI"
+            echo "📥 لینک از ورودی دستی: $URL"
+          else
+            MSG=$(git log -1 --pretty=%B)
+            URL=$(echo "$MSG" | grep -oP '(https?://[^\s]+)' | head -n1)
+            echo "📝 پیام commit: $MSG"
+          fi
+          
+          if [ -z "$URL" ]; then
+            echo ""
+            echo "❌ خطا: هیچ لینکی پیدا نشد!"
+            echo "========================================="
+            echo "📖 راهنمای استفاده:"
+            echo "========================================="
+            echo ""
+            echo "روش 1 - از طریق commit message:"
+            echo "  git commit -m \"دانلود https://youtu.be/XXXXXX quality:1080 playlist:true\""
+            echo "  git push"
+            echo ""
+            echo "روش 2 - از طریق GitHub UI:"
+            echo "  به تب Actions بروید"
+            echo "  روی '🍉 همه‌چیزدان v3.0' کلیک کنید"  
+            echo "  روی 'Run workflow' کلیک کنید"
+            echo "  لینک را در فیلد manual_url وارد کنید"
+            echo ""
+            echo "پارامترهای قابل استفاده در commit message:"
+            echo "  quality:2160/1440/1080/720/480/360 - کیفیت ویدیو"
+            echo "  playlist:true - دانلود کل پلی‌لیست"
+            echo "  audio-only:true - فقط صدا (MP3)"
+            echo "  subtitles:true - دانلود زیرنویس"
+            echo "  sponsorblock:false - غیرفعال کردن حذف اسپانسر"
+            echo "========================================="
+            exit 1
+          fi
+
+          echo "🔗 لینک تشخیص داده شده: $URL"
+          echo "----------------------------------------"
+
+          # تنظیمات پیشفرض
+          if [ -n "${{ github.event.inputs.manual_url }}" ]; then
+            # استفاده از تنظیمات workflow_dispatch
+            QUALITY="${{ github.event.inputs.quality }}"
+            AUDIO_ONLY="${{ github.event.inputs
