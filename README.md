@@ -1,346 +1,316 @@
-# 🍉 همه‌چیزدان v4.0 - کامل‌ترین ابزار دانلود خودکار
 
-<div dir="rtl">
+<div align="center">
 
-## 📥 دانلود از یوتیوب، تلگرام، اینستاگرام، گوگل پلی، ساندکلاد، لینک مستقیم و آرشیو صفحات وب!
+# 🍉 Hamechiz‑Down v6.3
+### دانلودر جهانی و موتور جستجوی سبک
 
-**همه‌چیزدان** یک ابزار قدرتمند مبتنی بر GitHub Actions است که می‌تواند هر فایل، ویدیو یا صفحه وبی را از هر سایتی دانلود یا آرشیو کند - کاملاً رایگان، بدون نیاز به سرور و بدون نصب هیچ نرم‌افزاری!
+دانلود خودکار و آرشیو محتوا از صدها وب‌سایت با استفاده از **GitHub Actions**
 
-</div>
-
----
-
-## ✨ ویژگی‌های نسخه 4.0
-
-<div dir="rtl">
-
-| قابلیت | توضیحات |
-|--------|---------|
-| 📥 **دانلود لینک مستقیم** | دانلود هر فایلی با `wget` و تقسیم خودکار فایل‌های بزرگتر از 90MB |
-| 🎬 **دانلودر یوتیوب** | ویدیو با کیفیت 4K، حذف خودکار اسپانسرها (SponsorBlock)، زیرنویس فارسی/انگلیسی |
-| 📱 **دانلودر تلگرام** | دانلود فایل از کانال‌های عمومی تلگرام |
-| 📸 **دانلودر اینستاگرام** | پست، ریل، استوری و هایلایت |
-| 🎵 **دانلودر ساندکلاد** | آهنگ و پلی‌لیست با کیفیت اصلی |
-| 🛍️ **دانلودر گوگل پلی** | دانلود فایل‌های APK از گوگل پلی |
-| 🌐 **آرشیو صفحات وب** | ذخیره کامل صفحات فیلتر شده به فرمت MHTML با مرورگر بی‌سر Chromium |
-| 🔞 **محتوای بزرگسالان** | پشتیبانی از پلتفرم‌های معروف |
-| 🚀 **دو روش اجرا** | از طریق GitHub UI یا commit message (حرفه‌ای) |
-| 🔍 **تشخیص خودکار** | تشخیص خودکار پلتفرم از روی لینک |
-| 📝 **پارامترهای فارسی** | امکان استفاده از دستورات به زبان فارسی |
-| ✂️ **تقسیم خودکار** | فایل‌های بالای 90MB به پارت‌های 90MB تقسیم می‌شوند |
+[![GitHub stars](https://img.shields.io/github/stars/avangardistic/hamechiz-down?style=for-the-badge)](https://github.com/avangardistic/hamechiz-down)
+[![GitHub forks](https://img.shields.io/github/forks/avangardistic/hamechiz-down?style=for-the-badge)](https://github.com/avangardistic/hamechiz-down)
+[![GitHub license](https://img.shields.io/github/license/avangardistic/hamechiz-down?style=for-the-badge)](LICENSE)
+[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/avangardistic/hamechiz-down/hamechiz-down.yml?style=for-the-badge)](https://github.com/avangardistic/hamechiz-down/actions)
 
 </div>
 
 ---
 
-## 🚀 شروع سریع
-
 <div dir="rtl">
 
-### مرحله 1: فورک کردن ریپازیتوری
+# 📥 درباره پروژه
 
-ابتدا این ریپازیتوری را **Fork** کنید (دکمه Fork در بالای صفحه).
+**همه‌چیزدان (Hamechiz‑Down)** یک ابزار متن‌باز است که با استفاده از **GitHub Actions** امکان دانلود، آرشیو و جستجوی محتوا از اینترنت را فراهم می‌کند.
 
-### مرحله 2: فعال کردن دسترسی نوشتن
+این ابزار می‌تواند بدون نیاز به سرور اختصاصی:
 
-۱. به `Settings` ریپازیتوری خود بروید  
-۲. به `Actions` > `General` بروید  
-۳. در بخش `Workflow permissions`، گزینه **Read and write permissions** را انتخاب کنید  
-۴. دکمه **Save** را بزنید  
+- 🎬 دانلود ویدیو از **YouTube**
+- 📸 دانلود پست و ریل از **Instagram**
+- 🎵 دانلود ویدیو از **TikTok**
+- 🐦 دانلود ویدیو از **Twitter/X**
+- 🤖 دانلود ویدیو از **Reddit**
+- 🎧 دانلود موسیقی از **SoundCloud**
+- 📱 دانلود فایل از **Telegram**
+- 🛍️ دانلود **APK** از **Google Play**
+- 🌐 آرشیو کامل صفحات وب
+- 🔎 جستجو در یوتیوب و اینستاگرام
 
-### مرحله 3: اجرا و دانلود
+را انجام دهد.
+
+تمام این عملیات با استفاده از **GitHub Actions Runner** انجام می‌شود و هیچ سرور جداگانه‌ای نیاز ندارد.
 
 </div>
 
 ---
 
-## 📋 دو روش اجرا
-
-### روش 1: اجرا با GitHub UI (ساده‌ترین)
+# ✨ ویژگی‌های نسخه 6.3
 
 <div dir="rtl">
 
-۱. به تب **Actions** بروید  
-۲. سمت چپ، **🍉 همه‌چیزدان v4.0** را انتخاب کنید  
-۳. دکمه **Run workflow** را بزنید  
-۴. حالت (Mode) و لینک مورد نظر را وارد کنید  
-۵. کیفیت و تنظیمات دلخواه را انتخاب کنید  
-۶. صبر کنید تا دانلود تمام شود  
-۷. فایل دانلود شده در پوشه مشخص شده (پیش‌فرض: `downloads/`) قرار می‌گیرد! 🎉
+| قابلیت | توضیح |
+|------|------|
+| 📥 دانلود لینک مستقیم | دانلود هر فایل با قابلیت resume |
+| 🎬 YouTube | کیفیت 4K، زیرنویس، پلی‌لیست، حذف اسپانسر |
+| 📸 Instagram | پست، ریل، استوری، جستجوی هشتگ |
+| 🎵 TikTok | دانلود بدون واترمارک |
+| 🐦 Twitter/X | دانلود ویدیو و GIF |
+| 🤖 Reddit | دانلود ویدیوهای پست |
+| 🎧 SoundCloud | دانلود MP3 و پلی‌لیست |
+| 📱 Telegram | دانلود فایل از کانال‌های عمومی |
+| 🛍️ Google Play | دانلود APK |
+| 🌐 Web Archive | ذخیره صفحات به فرمت MHTML |
+| 🔎 Search Mode | جستجو در یوتیوب و اینستاگرام |
+| 🖼 Thumbnail Gallery | تولید گالری HTML از نتایج |
+| ✂️ File Split | تقسیم خودکار فایل‌های بزرگ |
 
 </div>
 
-### روش 2: اجرا با commit message (حرفه‌ای)
+---
+
+# 🚀 شروع سریع
 
 <div dir="rtl">
+
+## مرحله 1 — فورک پروژه
+
+روی دکمه **Fork** کلیک کنید.
+
+## مرحله 2 — فعال کردن دسترسی نوشتن
+
+```
+Settings → Actions → General
+```
+
+گزینه زیر را فعال کنید:
+
+```
+Read and write permissions
+```
+
+## مرحله 3 — اجرای دانلود
+
+</div>
+
+---
+
+# ▶️ اجرای Workflow
+
+## روش 1 — رابط کاربری GitHub
+
+1️⃣ تب **Actions**  
+2️⃣ انتخاب **Hamechiz‑Down v6.3**  
+3️⃣ کلیک روی **Run workflow**
+
+---
+
+## روش 2 — Commit Message
 
 ```bash
-# دانلود ساده (تشخیص خودکار حالت)
-git commit -m "download https://youtu.be/XXXXXX" && git push
+# دانلود ویدیو
+git commit -m "download https://youtu.be/VIDEO_ID mode:youtube quality:1080" && git push
 
-# دانلود از یوتیوب با کیفیت 1080
-git commit -m "download https://youtu.be/XXXXXX mode:youtube quality:1080" && git push
-
-# دانلود از تلگرام
-git commit -m "download https://t.me/channel/123 mode:telegram" && git push
+# دانلود فقط صدا
+git commit -m "download https://youtu.be/VIDEO_ID audio-only" && git push
 
 # دانلود از اینستاگرام
 git commit -m "download https://instagram.com/p/XXXX mode:instagram" && git push
 
-# دانلود از گوگل پلی (APK)
-git commit -m "download https://play.google.com/store/apps/details?id=com.example.app mode:googleplay" && git push
+# جستجو در یوتیوب
+git commit -m "search: آموزش پایتون" && git push
 
-# آرشیو یک صفحه وب
-git commit -m "download https://example.com mode:webpage" && git push
-
-# دانلود کل پلی‌لیست یوتیوب با زیرنویس
-git commit -m "download https://youtube.com/playlist?list=XXXX mode:youtube playlist:true subtitles:true" && git push
-
-# فقط صدای یک آهنگ از یوتیوب
-git commit -m "download https://youtu.be/XXXX mode:youtube audio-only" && git push
-
-# دانلود با استفاده از پارامترهای فارسی
-git commit -m "دانلود https://youtu.be/XXXX حالت:یوتیوب کیفیت:1080 زیرنویس:true" && git push
+# جستجوی هشتگ اینستاگرام
+git commit -m "search: #طبیعت" && git push
 ```
 
-</div>
-
 ---
 
-## 📝 پارامترهای قابل استفاده در commit message
-
-<div dir="rtl">
-
-| پارامتر | مقادیر (انگلیسی/فارسی) | توضیح | مثال |
-|---------|----------------------|-------|------|
-| `mode:` | `youtube` / `یوتیوب` | حالت دانلود | `mode:youtube` |
-| | `telegram` / `تلگرام` | | `mode:telegram` |
-| | `instagram` / `اینستاگرام` | | `mode:instagram` |
-| | `soundcloud` / `ساندکلاد` | | `mode:soundcloud` |
-| | `googleplay` / `گوگل پلی` | | `mode:googleplay` |
-| | `webpage` / `آرشیو` | | `mode:webpage` |
-| | `direct` / `مستقیم` | | `mode:direct` |
-| | `adult` / `بزرگسالان` | | `mode:adult` |
-| `quality:` | `2160, 1440, 1080, 720, 480, 360, best` | کیفیت ویدیو | `quality:1080` |
-| `audio-only` / `فقط صدا` | `true, false` | فقط صدا (MP3) | `audio-only:true` |
-| `playlist:` / `لیست پخش` | `true, false` | دانلود کل پلی‌لیست | `playlist:true` |
-| `subtitles:` / `زیرنویس` | `true, false` | دانلود زیرنویس | `subtitles:true` |
-| `sponsorblock:` | `true, false` | حذف بخش‌های اسپانسری | `sponsorblock:false` |
-| `folder:` / `پوشه` | `نام پوشه` | پوشه خروجی | `folder:my_videos` |
-
-</div>
-
----
-
-## 🌐 حالت‌های دانلود و سایت‌های پشتیبانی شده
-
-<div dir="rtl">
-
-| حالت (Mode) | سایت‌ها | توضیح |
-|-------------|---------|-------|
-| `youtube` | YouTube | ویدیو 4K، حذف اسپانسر، زیرنویس، پلی‌لیست |
-| `telegram` | Telegram | کانال‌های عمومی |
-| `instagram` | Instagram | پست، ریل، استوری، هایلایت |
-| `soundcloud` | SoundCloud | آهنگ، پلی‌لیست |
-| `googleplay` | Google Play | دانلود APK |
-| `webpage` | هر سایت | آرشیو کامل صفحه به فرمت MHTML |
-| `direct` | هر لینک مستقیم | دانلود فایل با wget |
-| `adult` | پلتفرم‌های بزرگسالان | پشتیبانی از سایت‌های معروف |
-| `auto` | تشخیص خودکار | خودکار از روی لینک تشخیص می‌دهد |
-
-### سایت‌های پشتیبانی شده در حالت `auto`:
-
-| سایت | وضعیت | توضیح |
-|------|-------|-------|
-| **YouTube** | ✅ کامل | ویدیو و صدا با هر کیفیتی (4K, HDR, 60fps) |
-| **Instagram** | ✅ کامل | پست، ریل، استوری، هایلایت |
-| **Twitter (X)** | ✅ کامل | ویدیوهای توییت‌ها |
-| **TikTok** | ✅ کامل | بدون واترمارک |
-| **Facebook** | ✅ کامل | ویدیوهای عمومی |
-| **SoundCloud** | ✅ کامل | موسیقی، پادکست، پلی‌لیست |
-| **Twitch** | ✅ کامل | کلیپ‌ها، ویدیوهای آرشیو شده |
-| **Vimeo** | ✅ کامل | ویدیوها با کیفیت اصلی |
-| **DailyMotion** | ✅ کامل | ویدیوها |
-| **Reddit** | ✅ کامل | ویدیوهای پست‌ها |
-| **آپارات** | ✅ کامل | ویدیوهای ایرانی |
-| **Telegram** | ✅ کامل | کانال‌های عمومی |
-| **Pinterest** | ✅ کامل | ویدیوهای پین شده |
-| **LinkedIn** | ✅ کامل | ویدیوهای پست‌ها |
-| **و 1700+ سایت دیگر** | ✅ | هر سایتی که ویدیو یا صدا دارد |
-
-</div>
-
----
-
-## 🔐 تنظیمات کوکی (برای ویدیوهای خصوصی و سن بالا)
-
-<div dir="rtl">
-
-برای دانلود ویدیوهای زیر به کوکی نیاز دارید:
-- ویدیوهای age-restricted (نیاز به تأیید سن)
-- ویدیوهای unlisted/private
-- ویدیوهای members-only
-
-### آموزش ساخت Secret برای کوکی:
-
-۱. افزونه **"Get cookies.txt LOCALLY"** را از Chrome Web Store نصب کنید  
-۲. به YouTube بروید و وارد حساب کاربری خود شوید  
-۳. روی افزونه کلیک کنید و **Export** را بزنید  
-۴. فایل `cookies.txt` دانلود می‌شود  
-۵. محتوای فایل را کامل کپی کنید  
-۶. در GitHub بروید به `Settings` > `Secrets and variables` > `Actions`  
-۷. روی **New repository secret** کلیک کنید  
-۸. **Name:** `YOUTUBE_COOKIES`  
-۹. **Secret:** محتوای فایل `cookies.txt` را paste کنید  
-۱۰. ذخیره کنید  
-
-> ⚠️ **نکته امنیتی**: از یک حساب ثانویه گوگل استفاده کنید و هر 30 روز یکبار کوکی را به‌روزرسانی کنید.
-
-</div>
-
----
-
-## ❗ نکات مهم
-
-<div dir="rtl">
-
-1. **فضای ذخیره‌سازی**: ریپازیتوری رایگان گیت‌هاب حدود 4GB فضا دارد
-2. **زمان اجرا**: هر بار اجرا حداکثر 6 ساعت طول می‌کشد
-3. **تقسیم خودکار فایل‌ها**: فایل‌های بالای 90MB به صورت خودکار به پارت‌های 90MB تقسیم می‌شوند و در پوشه مخصوص زیپ می‌شوند
-4. **ویدیوهای age-restricted**: برای دانلود این ویدیوها حتماً نیاز به تنظیم کوکی دارید
-5. **پشتیبانی از پلی‌لیست**: می‌توانید کل پلی‌لیست را با یک بار اجرا دانلود کنید
-6. **آرشیو صفحات وب**: صفحات فیلتر شده با مرورگر بی‌سر Chromium به فرمت MHTML ذخیره می‌شوند
-
-</div>
-
----
-
-## 🛠️ رفع اشکال
-
-<div dir="rtl">
-
-### ❌ خطا: "No URL found"
-
-**راه حل**: 
-- مطمئن شوید لینک در commit message یا فیلد URL وارد شده است
-- فرمت لینک باید با `http://` یا `https://` شروع شود
-
-### ❌ خطا: "Permission denied"
-
-**راه حل**: به `Settings` > `Actions` > `General` بروید و دسترسی `Read and write permissions` را فعال کنید
-
-### ❌ دانلود ویدیوهای age-restricted انجام نمی‌شود
-
-**راه حل**: 
-- Secret به نام `YOUTUBE_COOKIES` را تنظیم کنید
-- از کوکی جدید استفاده کنید (ممکن است منقضی شده باشد)
-
-### ❌ کیفیت 4K دانلود نمی‌شود
-
-**راه حل**: 
-- ممکن است ویدیو کیفیت 4K نداشته باشد
-- سعی کنید `quality:best` را امتحان کنید
-
-### ❌ خطا در دانلود از تلگرام
-
-**راه حل**: 
-- فقط کانال‌های **عمومی** تلگرام پشتیبانی می‌شوند
-- از لینک مستقیم فایل استفاده کنید
-
-### ❌ فایل زیپ شده را چگونه اکسترکت کنم؟
-
-**راه حل**: 
-- فایل `.zip` را دانلود کنید
-- با نرم‌افزارهای معمولی مثل WinRAR یا 7-Zip باز کنید
-- برای فایل‌های چندبخشی (پارت 001, 002) همه را در یک پوشه بریزید و فایل اول را اکسترکت کنید
-
-</div>
-
----
-
-## 📁 ساختار فایل‌ها بعد از دانلود
-
-<div dir="rtl">
-
-```
-your-repository/
-├── .github/
-│   └── workflows/
-│       └── hamechiz-down.yml
-├── downloads/                          (پوشه خروجی پیش‌فرض)
-│   ├── video_title [ID].mp4            (فایل‌های کوچک)
-│   ├── telegram_channel_123.mp4        (فایل از تلگرام)
-│   ├── webpage_20250101_120000.mhtml   (آرشیو صفحه وب)
-│   └── video_name/                     (فایل‌های بزرگ تقسیم شده)
-│       └── video_name.zip              (زیپ چندبخشی)
-└── README.md
-```
-
-</div>
-
----
-
-## 🔄 آپدیت به نسخه جدید
-
-<div dir="rtl">
-
-برای همگام‌سازی فورک خود با آخرین تغییرات:
-1. در صفحه ریپازیتوری خود، دکمه **Sync fork** را بزنید
-2. یا با دستور زیر محلی خود را به‌روز کنید:
+## روش 3 — API
 
 ```bash
-git pull upstream main
-git push origin main
+curl -X POST \
+-H "Authorization: Bearer TOKEN" \
+-H "Accept: application/vnd.github+json" \
+https://api.github.com/repos/OWNER/REPO/actions/workflows/hamechiz-down.yml/dispatches \
+-d '{"ref":"main"}'
+```
+
+---
+
+# 📝 پارامترهای قابل استفاده
+
+<div dir="rtl">
+
+| پارامتر | مثال | توضیح |
+|-------|------|------|
+| mode | mode:youtube | انتخاب پلتفرم |
+| quality | quality:1080 | کیفیت ویدیو |
+| subtitles | subtitles:true | دانلود زیرنویس |
+| playlist | playlist:true | دانلود پلی‌لیست |
+| search | search:python | حالت جستجو |
+
+</div>
+
+---
+
+# 🔎 حالت جستجو
+
+<div dir="rtl">
+
+در حالت `search:` سیستم:
+
+1️⃣ در یوتیوب یا اینستاگرام جستجو می‌کند  
+2️⃣ نتایج را استخراج می‌کند  
+3️⃣ گالری تصویری می‌سازد
+
+فایل‌های خروجی:
+
+```
+search-results.json
+gallery.html
 ```
 
 </div>
 
 ---
 
-## 🤝 مشارکت
+# 🖼 مشاهده گالری
+
+با فعال کردن **GitHub Pages**:
+
+```
+Settings → Pages
+Source → main branch
+```
+
+گالری در آدرس زیر قابل مشاهده است:
+
+```
+https://USERNAME.github.io/REPO/gallery.html
+```
+
+---
+
+# 🌐 سایت‌های پشتیبانی شده
+
+- YouTube
+- Instagram
+- TikTok
+- Twitter/X
+- Reddit
+- SoundCloud
+- Telegram
+- Google Play
+- Twitch
+- Vimeo
+- Facebook
+- Dailymotion
+- Pinterest
+- LinkedIn
+- +1000 سایت دیگر توسط yt‑dlp
+
+---
+
+# 📁 ساختار خروجی
+
+```
+downloads/
+
+video_title [id].mp4
+
+video_folder/
+video.zip
+
+search-results.json
+
+gallery.html
+```
+
+---
+
+# ⚙️ حالت خروجی
+
+| Mode | توضیح |
+|-----|------|
+| repo | ذخیره در ریپازیتوری |
+| artifact | دانلود موقت از Actions |
+
+---
+
+# 🔐 کوکی یوتیوب
+
+برای دانلود ویدیوهای محدود:
+
+1️⃣ نصب افزونه
+
+```
+Get cookies.txt LOCALLY
+```
+
+2️⃣ استخراج cookies
+
+3️⃣ افزودن در GitHub Secrets
+
+```
+Settings → Secrets → Actions
+```
+
+نام:
+
+```
+YOUTUBE_COOKIES
+```
+
+---
+
+# ⚠️ محدودیت‌ها
 
 <div dir="rtl">
 
-ایده‌ای برای قابلیت جدید دارید؟ یک Issue باز کنید یا Pull Request بفرستید. خوشحال می‌شوم نظرات شما را بشنوم!
+- فضای رایگان GitHub حدود **۴GB**
+- حداکثر زمان اجرا **۶ ساعت**
+- فایل‌های بزرگ **۹۰MB** تقسیم می‌شوند
 
 </div>
 
 ---
 
-## ⚠️ سلب مسئولیت
+# 🛠 رفع مشکل
 
-<div dir="rtl">
+**Permission denied**
 
-این پروژه برای استفاده شخصی و آموزشی طراحی شده است. کاربران مسئول رعایت قوانین کشور خود و شرایط خدمات هر پلتفرمی هستند.
+فعال کردن:
 
-</div>
+```
+Settings → Actions → Read and write permissions
+```
+
+**Age restricted video**
+
+اضافه کردن:
+
+```
+YOUTUBE_COOKIES
+```
 
 ---
 
-## ⭐ حمایت
+# 🤝 مشارکت
 
-<div dir="rtl">
+اگر ایده‌ای دارید:
 
-اگر **همه‌چیزدان** برایتان مفید بود، با زدن یک ستاره ⭐ از من حمایت کنید!
-
-</div>
+- Issue باز کنید
+- Pull Request ارسال کنید
 
 ---
 
-## 🙏 تشکر ویژه
+# ⚠️ سلب مسئولیت
 
-<div dir="rtl">
-
-- از تیم **yt-dlp** برای ساخت این ابزار قدرتمند
-- از **Kurdeus** برای ایده‌های جالب در پروژه **Meli-Action**
-
-</div>
+این پروژه برای اهداف آموزشی و شخصی توسعه داده شده است. کاربران مسئول رعایت قوانین پلتفرم‌ها هستند.
 
 ---
 
 <div align="center">
-  
-**🍉 همه‌چیزدان v4.0 - هر چی را از هر جا که بخواهید دانلود کنید!**  
+
+⭐ اگر این پروژه برای شما مفید بود، به آن **Star** بدهید.
 
 </div>
 ```
