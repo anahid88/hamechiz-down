@@ -1,0 +1,130 @@
+name: "🍉 Hamechiz-Down v6 - Universal Media Downloader"
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+    # جلوگیری از commit loop
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Download mode'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - youtube
+          - instagram
+          - tiktok
+          - twitter
+          - reddit
+          - soundcloud
+          - telegram
+          - googleplay
+          - webpage
+          - direct
+      urls:
+        description: 'URLs (one per line)'
+        required: false
+        type: string
+      quality:
+        description: 'Quality'
+        default: 'best'
+        type: choice
+        options:
+          - best
+          - 2160
+          - 1440
+          - 1080
+          - 720
+          - 480
+          - 360
+          - audio-only
+      subtitles:
+        description: 'Download subtitles'
+        default: false
+        type: boolean
+      playlist:
+        description: 'Download playlist'
+        default: false
+        type: boolean
+      output_mode:
+        description: 'Output mode'
+        default: 'repo'
+        type: choice
+        options:
+          - repo
+          - artifact
+          - release
+
+  repository_dispatch:
+    types: [download-command]
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: hamechiz-queue
+  cancel-in-progress: false   # مهم: اجازه نمی‌دهد دانلودها با هم تداخل کنند
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 354
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Setup Python & Dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -yqq ffmpeg zip unzip wget curl jq parallel
+          pip install --quiet --no-cache-dir --upgrade \
+            yt-dlp pyppeteer tenacity
+          echo "✅ Ready"
+
+      - name: Setup cookies (if provided)
+        if: secrets.YOUTUBE_COOKIES != ''
+        run: |
+          mkdir -p ~/.cache/yt-dlp
+          echo "${{ secrets.YOUTUBE_COOKIES }}" > ~/.cache/yt-dlp/cookies.txt
+          chmod 600 ~/.cache/yt-dlp/cookies.txt
+          echo "cookies_file = '~/.cache/yt-dlp/cookies.txt'" >> config.ini
+
+      - name: Run Downloader Engine
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_MODE: ${{ github.event.inputs.mode }}
+          INPUT_URLS: ${{ github.event.inputs.urls }}
+          INPUT_QUALITY: ${{ github.event.inputs.quality }}
+          INPUT_SUBTITLES: ${{ github.event.inputs.subtitles }}
+          INPUT_PLAYLIST: ${{ github.event.inputs.playlist }}
+          OUTPUT_MODE: ${{ github.event.inputs.output_mode }}
+          REPO_FULL_NAME: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          CLIENT_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: |
+          python3 scripts/downloader.py
+
+      - name: Upload Artifact (if output_mode=artifact)
+        if: success() && env.OUTPUT_MODE == 'artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: downloaded-files-${{ github.run_id }}
+          path: downloads/
+          retention-days: 7
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -rf downloads/*.part 2>/dev/null || true
+          echo "Cleanup done"
