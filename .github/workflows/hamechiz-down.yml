@@ -123,12 +123,12 @@ jobs:
             yt-dlp pyppeteer requests tenacity
           echo "✅ Ready"
 
-      - name: "🍪 Setup Cookies"
-        if: secrets.YOUTUBE_COOKIES != ''
-        run: |
-          mkdir -p "$RUNNER_TEMP/yt-dlp"
-          echo "${{ secrets.YOUTUBE_COOKIES }}" > "$RUNNER_TEMP/yt-dlp/cookies.txt"
-          chmod 600 "$RUNNER_TEMP/yt-dlp/cookies.txt"
+      #- name: "🍪 Setup Cookies"
+       # if: secrets.YOUTUBE_COOKIES != ''
+        #run: |
+         # mkdir -p "$RUNNER_TEMP/yt-dlp"
+          #echo "${{ secrets.YOUTUBE_COOKIES }}" > "$RUNNER_TEMP/yt-dlp/cookies.txt"
+          #chmod 600 "$RUNNER_TEMP/yt-dlp/cookies.txt"
 
       # ============================================================
       # PARSER - کاملاً بازنویسی شده
