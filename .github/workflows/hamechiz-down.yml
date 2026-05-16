@@ -84,7 +84,7 @@ on:
 permissions:
   contents: write
   actions: write
-  metadata: read
+  #metadata: read
 
 concurrency:
   group: hamechiz-${{ github.repository }}
